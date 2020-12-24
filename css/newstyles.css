@@ -1,0 +1,346 @@
+:root {
+  --book_btn: #578bbd;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #edffff;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+.navigation-bar {
+  padding: 10px;
+  display: flex;
+  width: 100vw;
+  height: 8vh;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #024789;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid black;
+  margin-bottom: 0;
+  color: white;
+}
+.blue-font{
+  color: blue;
+}
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.smol-button {
+  background-color: var(--book_btn);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.book-btn {
+  margin-top: auto;
+}
+.book-btn:hover{
+  background-color:#024789 ;
+  color: white;
+}
+.logo {
+  transform: translateX(-100px);
+  font-size: 35px;
+  color: white;
+  /*font-weight: bolder;*/
+  letter-spacing: 2px;
+}
+.login-btn {
+  transform: translateX(100px);
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  border-radius: 5px;
+}
+.login-btn a {
+  text-decoration: none;
+  color: black;
+}
+.login-btn:hover {
+  background-color: #e7e7e7;
+}
+.home-btn a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+.home-btn {
+  transform: translateX(35vw);
+}
+.home-btn2{
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  transform: translateX(20vw);
+}
+.concert-cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 30px;
+}
+.card-heading {
+  font-size: 20px;
+  margin: 15px 15px 15px 15px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+.card {
+  background-color: white;
+  margin: 10px 10px 0 0;
+  height: 50vh;
+  width: 15vw;
+  padding: 20px 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px grey solid;
+  border-right: 1px grey solid;
+  border-radius: 5px;
+}
+.c-image {
+  height: auto;
+  width: 8vw;
+  border-radius: 50px;
+}
+.c-name {
+  text-align: center;
+}
+.book-btn {
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+}
+
+.about-us {
+  position: relative;
+  left: 0;
+  background-image: url(../img/concert4.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50vh;
+  width: 100vw;
+  transform: translateY(-67px);
+}
+
+.heading {
+  font-family: sans-serif;
+  padding-left: 30px;
+  font-size: 80px;
+  color: white;
+  text-align: left;
+  transform: translateY(18vh);
+  font-stretch: expanded;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  background-color: #024789;
+  display: flex;
+  margin: 5px 12px;
+  margin-bottom:0px;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0;
+  color: white;
+}
+.social a {
+  color: white;
+}
+
+/* label {
+  margin: 5px;
+  display: block;
+  margin-bottom: 10px;
+} */
+.input {
+  margin: 5px;
+  display: block;
+  height: 30px;
+  width: 30em;
+  border-radius: 4px;
+  border: 3px #d3d3d3 solid;
+  margin-bottom: 10px;
+}
+.input:onclick {
+  border: 1px red solid;
+}
+.login-sec {
+  margin: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 95vh;
+}
+.user-info {
+  padding: 10px;
+  width: 45vw;
+  height: 50vh;
+}
+button {
+  height: 45px;
+  width: 130px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 3px;
+  background-color: #32aefff2;
+  border: 2px white solid;
+  color: black;
+}
+button:hover {
+  background-color: rgb(3, 99, 243);
+  border: none;
+  color: white;
+  transition: all 50ms ease-in;
+}
+.login {
+  transform: translate(10vw, 10vh);
+}
+.sign-up {
+  transform: translate(3vw, 5vh);
+}
+.booking-sec {
+  padding: 10px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-basis: 40vw;
+  padding-bottom: 5vh;
+}
+.description {
+  /* background-color: red; */
+  width: 35vw;
+  text-align: center;
+}
+.description img {
+  height: auto;
+  width: 20vw;
+  margin: 4px;
+  border-radius: 5px;
+}
+.booking {
+  padding: 5px;
+  width: 50vw;
+  /* background-color: yellowgreen; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.booking-form {
+  margin-top: 30px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.pay-btn {
+  transform: translateY(4vh);
+}
+.ip{
+
+  display: none;
+}
+.ip-label {
+    cursor: pointer;
+    padding: 8px;
+    border-radius:5px;
+    background-color: #3434c3;
+    color: white;
+    margin: 0px 10px;
+}
+.ip:checked + .ip-label {
+    background-color: #0b044b;
+    color: white;
+}
+.details-list{
+  list-style-type: none;
+}
+
+.deets{
+  display: flex;
+  margin: 5px 0px;
+}
+
+span{
+  font-weight:bolder;
+}
+
+.ticket-sec{
+  min-height: 80vh;
+  padding: 5px 5px;
+
+}
+.booked{
+
+}
+.ticket-card{
+  padding: 10px;
+  margin:5px;
+  background-color: white;
+  border-radius:5px;
+  border-bottom:2px solid black;
+  border-right:2px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+.cancelbtn{
+  height: 15px;
+  width: 50px;
+  border-radius: 5px;
+}
+.cancelbtn a{
+  text-decoration: none;
+  color: white;
+}
+.cancelbtn:hover{
+  background-color: black;
+  color: white;
+}
+.no-button{
+  background-color: var(--book_btn);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 3px;
+  width: 60px;
+  height: 13px;
+}
+.no-button:hover{
+  background-color:#0363f3 ;
+}

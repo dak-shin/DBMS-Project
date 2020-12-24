@@ -1,0 +1,135 @@
+	create database concert_ticket;
+
+	use concert_ticket;
+
+	create table ticket_type(type_id int not null auto_increment,
+    seating_area varchar(25),
+    ticket_price int,
+    primary key(type_id));
+
+    create table merch(merch_type varchar(25) not null,
+    merch_price int,
+    primary key(merch_type));
+
+    create table sponsors(spon_id int not null auto_increment,
+    spon_name varchar(128),
+    spon_type varchar(128),
+    primary key(spon_id));
+
+    create table artists(artist_id int not null auto_increment,
+    artist_name varchar(25),
+    genre varchar(25),
+    primary key (artist_id));
+
+    create table venue( 
+    venue_name varchar(128) not null ,
+    venue_location varchar(128),
+    type varchar(20),
+    capacity int,
+    primary key(venue_name));
+
+	create table concert(concert_id int not null auto_increment,
+	concert_name varchar(128),
+	venue_name varchar(128) not null,
+	artist_id int,
+	concert_date date,
+	merch_type varchar(25),
+	spon_id int,
+	foreign key(venue_name) references venue(venue_name),
+	foreign key(artist_id) references artists(artist_id),
+	foreign key(merch_type) references merch(merch_type),
+	foreign key(spon_id) references sponsors(spon_id),
+	primary key(concert_id));
+
+	create table customer(customer_id int not null auto_increment,
+    email varchar(128),
+    user_name varchar(128),
+    password varchar(128),
+    primary key(customer_id));
+
+    create table ticket(ticket_id int not null auto_increment,
+    type_id int,
+    venue_location varchar(128),
+    seat_no varchar(25),
+    concert_id int not null,
+    customer_id int,
+    foreign key(customer_id) references customer(customer_id),
+    foreign key(type_id) references ticket_type(type_id),
+    foreign key(concert_id) references concert(concert_id),
+    primary key(ticket_id));
+
+    ALTER TABLE ticket
+	RENAME COLUMN venue_location TO venue_name;
+
+    
+    Insert into artists(artist_name, genre) values ('Michael Scott','Sitcom');
+    Insert into artists(artist_name, genre) values ('Shreya Goshal','Classical');
+    Insert into artists(artist_name, genre) values ('Divine','Rap');
+    Insert into artists(artist_name, genre) values ('Emiway Bantai','Rap');
+    Insert into artists(artist_name, genre) values ('Agnee','Rock');
+    Insert into artists(artist_name, genre) values ('Local Train','Rock');
+    Insert into artists(artist_name, genre) values ('Nucleya','EDM');
+    Insert into artists(artist_name, genre) values ('Iboga Records','Hip Hop');
+    Insert into artists(artist_name, genre) values ('DeepDictionary','Hip Hop');
+    Insert into artists(artist_name, genre) values ('Metal Nights','Rock');
+    Insert into artists(artist_name, genre) values ('Soulmate','Rock');
+    Insert into artists(artist_name, genre) values ('Tidal Wave','Hip Hop');
+
+    Insert into venue values ('Royal_Opera_House','Mumbai','Opera House',400);
+    Insert into venue values('blueFROG','Bangalore','Indoor', 100);
+    Insert into venue values('The Humming Tree','Bangalore','Indoor',150);
+    Insert into venue values('Fandom','Bangalore','Outdoor',400);
+    Insert into venue values('Shriram Bharatiya Kala Kendra','Delhi','Concert hall',300);
+    Insert into venue values('Pebble','Bangalore','Outdoor',120);
+    Insert into venue values('Hard Rock cafe','Bangalore','Rooftop',100);
+    Insert into venue values('SkyDeck','Sheshadripuram','Indoor',80);
+    Insert into venue values('Dunder Mifflin','Scranton','Outdoor',20);
+    Insert into venue values('Manpho Convention Centre','Bangalore','Outdoor',1000);
+
+    Insert into ticket_type (seating_area, ticket_price) values ('Diamond', 1550);
+    Insert into ticket_type (seating_area, ticket_price) values ('Platinum', 899);
+    Insert into ticket_type (seating_area, ticket_price) values ('Gold', 650);
+    Insert into ticket_type (seating_area, ticket_price) values ('Silver', 400);
+    Insert into ticket_type (seating_area, ticket_price) values ('Bronze', 250);
+
+    Insert into merch values('T-shirt',450);
+    Insert into merch values('Shoes',2000);
+    Insert into merch values('Mobile cover',300);
+    Insert into merch values('Badges',120);
+    Insert into merch values('Stickers',80);
+
+    Insert into sponsors (spon_name, spon_type) value ('Mountian Dew','Level 1'); 
+    Insert into sponsors (spon_name, spon_type) value ('Oneplus','Level 3');
+    Insert into sponsors (spon_name, spon_type) value ('Amul','Level 1');
+    Insert into sponsors (spon_name, spon_type) value ('Zebronics','Level 2');
+    Insert into sponsors (spon_name, spon_type) value ('Xiaomi','Level 5');
+    Insert into sponsors (spon_name, spon_type) value ('Nike','Level 1');
+    Insert into sponsors (spon_name, spon_type) value ('FastTrack','Level 4');
+    Insert into sponsors (spon_name, spon_type) value ('Tp-link','Level 1');
+   	Insert into sponsors (spon_name, spon_type) value ('Vance Refrigeration','Level 1'); 
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Goodbye Toby','Dunder Mifflin',1,'2020-12-30','T-shirt',9);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, spon_id) values ('Shreya Ghoshal conert','Pebble',2,'2021-01-03',3);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Captain Hook ft. Iboga records','Fandom',8,'2021-02-13','Shoes',6);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('MondayBlues ft.Soulmate','The Humming Tree',10,'2021-01-18','T-shirt',7);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Saturday Night Live ft.Tidal Wave','blueFROG',12,'2021-01-21','Badges',5);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Bangalore Open Air - Metal Nights','blueFROG',11,'2021-02-01','Stickers',2);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Sunburn','Manpho Convention Centre',7,'2021-02-15','Stickers',1);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Sunburn','Manpho Convention Centre',7,'2021-02-16','Stickers',1);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Sunburn','Manpho Convention Centre',7,'2021-02-17','Stickers',1);
+
+    Update concert set timming = '8:00 PM' where concert_id = 1;
+    Update concert set timming = '6:30 PM' where concert_id = 3;
+    Update concert set timming = '8:00 PM' where concert_id = 4;
+    Update concert set timming = '7:45 PM' where concert_id = 5;
+    Update concert set timming = '8:00 PM' where concert_id = 6;
+    Update concert set timming = '8:15 PM' where concert_id = 2;
+    Update concert set timming = '9:30 PM' where concert_id = 12;
