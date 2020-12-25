@@ -83,14 +83,14 @@
 	        if(!$result) die($connection->error);
 	        $rows = $result->num_rows;
 	        $c_names = array();
-	  //       for($i = 0; $i<$rows;$i++)
-	  //       {
-	  //       	$row = $result->fetch_assoc();
-	  //       	$c_id[] = $row['concert_id'];
-	  //       	$c_names[] = $row['concert_name'];
-	  //       	$c_time[] = $row['timming'];
-	  //       	$c_date[] = $row['concert_date'];
-	  //       }
+			//       for($i = 0; $i<$rows;$i++)
+			//       {
+			//       	$row = $result->fetch_assoc();
+			//       	$c_id[] = $row['concert_id'];
+			//       	$c_names[] = $row['concert_name'];
+			//       	$c_time[] = $row['timming'];
+			//       	$c_date[] = $row['concert_date'];
+			//       }
 			// foreach($c_names as $name)
 			// {
 			// 	echo <<<HTML

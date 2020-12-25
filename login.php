@@ -120,16 +120,16 @@
                     <hr>
 
                     <label for="s_email"><b>Email</b></label>
-                    <input class="input" type="text" placeholder="Your email" name="s_email" required>
+                    <input class="input" type="text" placeholder="Your email" name="s_email" required autocomplete="off">
 
                     <label for="s_username"><b>Username</b></label>
-                    <input class="input" type="text" placeholder="Username" name="s_username" required>
+                    <input class="input" type="text" placeholder="Username" name="s_username" required autocomplete="off">
 
                     <label for="s_psw"><b>Password</b></label>
-                    <input class="input" type="password" placeholder="Password" name="s_psw" required>
+                    <input class="input" type="password" placeholder="Password" name="s_psw" required autocomplete="off">
 
                     <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input class="input" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                    <input class="input" type="password" placeholder="Repeat Password" name="psw-repeat" required autocomplete="off">
 
                     <br>
                     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.
@@ -171,6 +171,8 @@
                     <button type="submit">
                         Log In
                     </button>
+                    <br>
+                    <a href="adminlogin.php">Admin Login</a>
 
                 </div>
             </form>

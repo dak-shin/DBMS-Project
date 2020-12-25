@@ -58,9 +58,13 @@
     foreign key(concert_id) references concert(concert_id),
     primary key(ticket_id));
 
-    ALTER TABLE ticket
-	RENAME COLUMN venue_location TO venue_name;
+    create table admin(admin_id int not null auto_increment,
+    email varchar(128),
+    admin_name varchar(128),
+    password varchar(128),
+    primary key(admin_id));
 
+    Insert into admin(admin_name, email, password) values ('admin', 'admin@email.com', 'pswd');
     
     Insert into artists(artist_name, genre) values ('Michael Scott','Sitcom');
     Insert into artists(artist_name, genre) values ('Shreya Goshal','Classical');
@@ -135,3 +139,34 @@
     Update concert set timming = '9:30 PM' where concert_id = 12;
 
     update ticket t, ticket_type tt set t.amt = tt.ticket_price * t.seat_no where t.type_id = tt.type_id;
+
+
+    #concert {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#concert td, #concert th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#concert tr:nth-child(even){background-color: #f2f2f2;}
+
+#concert tr:hover {background-color: #ddd;}
+
+#concert th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+<table id="customers">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  </table>

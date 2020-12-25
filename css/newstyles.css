@@ -297,7 +297,6 @@ span{
 .ticket-sec{
   min-height: 80vh;
   padding: 5px 5px;
-
 }
 .booked{
 
@@ -343,4 +342,47 @@ span{
 }
 .no-button:hover{
   background-color:#0363f3 ;
+}
+
+.dash-sec{
+  margin: 10px;
+  height: 95vh;
+}
+.in-dash-sec{
+  display: flex;
+}
+.ticket-part .concert-part{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-basis: 45vw;
+}
+
+#concert {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+#concert td, #concert th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#concert tr:nth-child(even){background-color: #f2f2f2;}
+
+#concert tr:hover {background-color: #ddd;}
+
+#concert th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #024789;
+  color: white;
+}
+
+.main-sec{
+  margin: 10px;
+  height: 95vh;
 }

@@ -91,14 +91,7 @@
 			// $_SESSION[''] =	$spon_name
 			
 
-        	if(isset($_POST['book']))
-        	{	
-        		
-        		echo $type;
-        		echo $size;
-        		$query = "Insert into ticket(type_id, venue_location, seat_no, concert_id, customer_id) values ('','')";
-        	}
-
+   
 
 			echo <<<HTML
 				<div class="description">
