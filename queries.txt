@@ -133,3 +133,5 @@
     Update concert set timming = '8:00 PM' where concert_id = 6;
     Update concert set timming = '8:15 PM' where concert_id = 2;
     Update concert set timming = '9:30 PM' where concert_id = 12;
+
+    update ticket t, ticket_type tt set t.amt = tt.ticket_price * t.seat_no where t.type_id = tt.type_id;

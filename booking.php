@@ -22,6 +22,8 @@
 			session_start();
 			if(!isset($_SESSION['username']))
 				header('Location: http://localhost/scripts/login.php');
+			if(!isset($_GET['concert_name'])) 
+				header('Location: http://localhost/scripts/index.php');
             require_once 'test.php';
             $loginbtn = <<<HTML
                 <a href="./login.php" >
@@ -45,6 +47,7 @@
 	
 	<section class="booking-sec">
 		<?php
+
 			$conc_name = $_GET['concert_name'];		//Concert name		
 			
 			$customer_name = $_SESSION['username'];
@@ -125,19 +128,19 @@
 						<div class="container">
 							<div class="level form">
 								<label class="labels" for="level">Seating class : </label>
-								<input type="radio" id="Diamond" name="level" value="Diamond " class="ip">
+								<input type="radio" id="Diamond" name="level" value="Diamond " class="ip" required>
 								<label for="Diamond" class="ip-label">Diamond</label>
 
-								<input type="radio" id="Platinum" name="level" value="Platinum " class="ip">
+								<input type="radio" id="Platinum" name="level" value="Platinum " class="ip" required>
 								<label for="Platinum" class="ip-label">Platinum</label>
 
-								<input type="radio" id="Gold" name="level" value="gold " class="ip">
+								<input type="radio" id="Gold" name="level" value="gold " class="ip" required>
 								<label for="Gold" class="ip-label">Gold</label>
 
-								<input type="radio" id="Silver" name="level" value="silver" class="ip">
+								<input type="radio" id="Silver" name="level" value="silver" class="ip" required>
 								<label for="Silver" class="ip-label">Silver</label>
 
-								<input type="radio" id="bronze" name="level" value="bronze" class="ip">
+								<input type="radio" id="bronze" name="level" value="bronze" class="ip" required>
 								<label for="bronze" class="ip-label">Bronze</label>
 								<br><br><br>
 								<label for="number">Number of seats : </label><br>

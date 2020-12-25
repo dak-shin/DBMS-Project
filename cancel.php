@@ -110,7 +110,12 @@
 			if(!$result) die($connection->error);
 			else 
 			{
-				echo "Ticket has been cancelled successfully, refund will be initiated shortly";
+				echo <<<HTML
+						<p class="booked" style="display: inline;">Ticket has been cancelled, refund will be initiated shortly</p>
+						<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
+							Show Tickets
+						</a>
+					HTML;
 
 			}
 		}

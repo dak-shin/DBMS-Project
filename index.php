@@ -48,8 +48,10 @@
 		</h1>
 	</section>
 	<?PHP
-		if(isset($_SESSION['username'])){ $user = $_SESSION['username'];
-		echo <<<HTML
+		if(isset($_SESSION['username']))
+			{ 
+				$user = $_SESSION['username'];
+			echo <<<HTML
 					<p class="card-heading">Music Events near you $user</p> 
 				HTML;
 			}
@@ -81,29 +83,59 @@
 	        if(!$result) die($connection->error);
 	        $rows = $result->num_rows;
 	        $c_names = array();
-	        for($i = 0; $i<$rows;$i++)
+	  //       for($i = 0; $i<$rows;$i++)
+	  //       {
+	  //       	$row = $result->fetch_assoc();
+	  //       	$c_id[] = $row['concert_id'];
+	  //       	$c_names[] = $row['concert_name'];
+	  //       	$c_time[] = $row['timming'];
+	  //       	$c_date[] = $row['concert_date'];
+	  //       }
+			// foreach($c_names as $name)
+			// {
+			// 	echo <<<HTML
+			// 		<div class="card">
+			// 			<img src="./img/dm.png" class="c-image">
+			// 			<div class="c-name">
+			// 				<h3>$name</h3>
+			// 			</div>
+			// 			<a href="http://localhost/scripts/booking.php?concert_name=$name" class="book-btn smol-button">
+			// 				Book now
+			// 			</a>
+			// 		</div> 
+			// 	HTML;
+			// }
+
+			for($i = 0; $i<$rows;$i++)
 	        {
 	        	$row = $result->fetch_assoc();
-	        	$c_id[] = $row['concert_id'];
-	        	$c_names[] = $row['concert_name'];
-	        }
-			foreach($c_names as $name)
-			{
-				echo <<<HTML
+	        	$c_id = $row['concert_id'];
+	        	$name = $row['concert_name'];
+	        	$time = $row['timming'];
+	        	$date = $row['concert_date'];
+	        	$url = "./img/c_poster".$c_id.".jpg";
+
+	        	echo <<<HTML
 					<div class="card">
-						<img src="./img/dm.png" class="c-image">
+						<img src=$url class="c-image">
 						<div class="c-name">
 							<h3>$name</h3>
 						</div>
-
-						<div>
+						<div class="c-name">
+							<h3>$date</h3>
+						</div>
+						<div class="c-name">
+							<h3>$time</h3>
 						</div>
 						<a href="http://localhost/scripts/booking.php?concert_name=$name" class="book-btn smol-button">
 							Book now
 						</a>
 					</div> 
-				HTML;
-			}
+					HTML;
+
+
+	        }
+
 			
 		?>
 	</section>

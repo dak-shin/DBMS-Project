@@ -76,17 +76,25 @@
 			$venue_name = $_SESSION['venue_name']; 
 			$ticket_query = "Insert into ticket (type_id,venue_location, seat_no, concert_id, customer_id) values ('$type_id','$venue_name','$size','$concert_id','$customer_id')";
 			$result3 = $connection->query($ticket_query);
+
+			
 			if(!$result3) die($connection->error);
 			else 
 			{
-
-				echo <<<HTML
-					<p class="booked" style="display: inline;">Ticket booked successfully</p>
-					<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
-						Show Tickets
-					</a>
-				HTML;
-
+				$amt_query = "update ticket t, ticket_type tt set t.amt = tt.ticket_price * t.seat_no where t.type_id = tt.type_id;";
+				$result4 = $connection->query($amt_query);
+				if (!$result4) {
+					die($connection->error);
+				}
+				else
+				{
+					echo <<<HTML
+						<p class="booked" style="display: inline;">Ticket booked successfully</p>
+						<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
+							Show Tickets
+						</a>
+					HTML;
+				}	
 
 			}
 
@@ -122,6 +130,7 @@
 	        		$t_no = $arr['seat_no'];
 	        		$c_id = $arr['concert_id'];
 	        		$cu_id = $arr['customer_id'];
+	        		$t_amt = $arr['amt'];
 
 	        		$concert_query = "Select * from concert where concert_id = $c_id";
         			$result2 = $connection->query($concert_query);
@@ -142,6 +151,7 @@
 							<div><span>Time : </span>$c_time</div>
 							<div><span>Date : </span>$c_date</div>
 							<div><span>User ID : </span>$cu_id</div>
+							<div><span>Total Amount : </span>Rs.$t_amt</div>
 						</div>
 						<div class="cancelbtn smol-button">
 							<a href="http://localhost/scripts/cancel.php?ticket_id=$t_id" >Cancel</a>
