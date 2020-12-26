@@ -118,7 +118,11 @@
 
                         HTML;
 
-                        
+                        if(isset($_GET['admin_valid_id']))
+                        {
+                            echo " <h3>Enter a valid admin ID</h3>";
+                        }
+
 
                         break;
                     
@@ -165,21 +169,29 @@
                     
                     $admin_id = $_POST['admin_id'];
 
-                    $admin_check = "select * from admin where admin_id = '$admin_id'";
+                    $admin_check_query = "select * from admin where admin_id = '$admin_id'";
                     $result = $connection->query($admin_check_query);
-                    $admin_add_query = "Delete from admin where admin_id = '$admin_id'";
-                    $result = $connection->query($admin_add_query);
-                    if(!$result) die($connection->error);
-                    else 
+
+                    if($result->num_rows == 1)
                     {
-                        echo <<<HTML
+                        $admin_add_query = "Delete from admin where admin_id = '$admin_id'";
+                        $result = $connection->query($admin_add_query);
+                        if(!$result) die($connection->error);
+                        else 
+                        {
+                            echo <<<HTML
 
-                            Admin Account removed successfully 
-                            <a href="http://localhost/scripts/dashboard.php" class="book-btn smol-button" style="margin-left: auto;">
-                                Dashboard
-                            </a>
+                                Admin Account removed successfully 
+                                <a href="http://localhost/scripts/dashboard.php" class="book-btn smol-button" style="margin-left: auto;">
+                                    Dashboard
+                                </a>
 
-                        HTML;
+                            HTML;
+                        }
+                    }
+                    else
+                    {
+                        header('Location: http://localhost/scripts/admin_q.php?a_flag=2&admin_valid_id="false"');
                     }
                 }
             } 

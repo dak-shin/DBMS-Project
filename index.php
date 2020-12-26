@@ -23,7 +23,7 @@
             require_once 'test.php';
             $loginbtn = <<<HTML
                 <a href="./login.php" >
-                    <div class="login-btn button blue-font" style="color: #024789;">
+                    <div class="login-btn button blue-font">
                         Sign up/Log in
                     </div>
                 </a>
@@ -52,7 +52,7 @@
 			{ 
 				$user = $_SESSION['username'];
 			echo <<<HTML
-					<p class="card-heading">Music Events near you $user</p> 
+					<p class="card-heading">Musical Events near you, $user</p> 
 				HTML;
 			}
 			else
