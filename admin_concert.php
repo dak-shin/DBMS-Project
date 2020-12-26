@@ -252,6 +252,10 @@
 
                     HTML;
 
+                    if(isset($_GET['valid_concert_id']))
+                    {
+                        echo "<h3>Please enter valid concert id</h3>";
+                    }
 
                     break;
                 

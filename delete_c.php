@@ -53,22 +53,29 @@
             $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
 
             $concert_id = $_POST['concert_id'];
-            
-            $delete_query = "delete from concert where concert_id = '$concert_id'";
 
-            $result = $connection->query($delete_query);
-            if(!$result) die($connection->error);
-            else echo "Concert deleted successfully";
-        
+            $concert_check_query = "select * from concert where concert_id = '$concert_id'";
+            $result = $connection->query($concert_check_query);
+
+            if($result->num_rows == 1)
+            {
+                $delete_query = "delete from concert where concert_id = '$concert_id'";
+                $result = $connection->query($delete_query);
+                if(!$result) die($connection->error);
+                else 
+                {
+                    //if(!$result) die($connection->error);
+                    echo "Concert deleted successfully";
+                }
+            }
+            else
+            {
+                header('Location: http://localhost/scripts/admin_concert.php?c_flag=3&valid_concert_id="false"');
+            }        
         ?>
-
-
         <a href="http://localhost/scripts/dashboard.php" class="book-btn smol-button" >
             Dashboard
         </a>
-
-        
-
     </section>
 
     <section class="footer">
