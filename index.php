@@ -122,10 +122,11 @@
 							<h3>$name</h3>
 						</div>
 						<div class="c-name">
-							<h3>$date</h3>
+							$date
 						</div>
+						<br>
 						<div class="c-name">
-							<h3>$time</h3>
+							$time
 						</div>
 						<a href="http://localhost/scripts/booking.php?concert_name=$name" class="book-btn smol-button">
 							Book now

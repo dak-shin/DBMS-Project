@@ -120,6 +120,7 @@
      
         <div class="in-dash-sec">
             <div class="concert-part">
+                <span>Concert Queries</span><br><br><br>
                 <a href="http://localhost/scripts/admin_concert.php?c_flag=1" class="book-btn smol-button" >
                     Show Concerts
                 </a>
@@ -134,6 +135,7 @@
             </div>
 
             <div class="ticket-part">
+                <span>Ticket Queries</span><br><br><br>
                 <a href="http://localhost/scripts/admin_ticket.php?t_flag=1" class="book-btn smol-button" >
                     Show All Tickets
                 </a><br>
@@ -142,14 +144,15 @@
                 </a>
             </div>
 
-            <!-- <div class="admin-part">
-                <a href="http://localhost/scripts/admin_ticket.php?t_flag=1" class="book-btn smol-button" >
+            <div class="admin-part">
+                <span>Admin Queries</span><br><br><br>
+                <a href="http://localhost/scripts/admin_q.php?a_flag=1" class="book-btn smol-button" >
                     Add Admin
                 </a><br>
-                <a href="http://localhost/scripts/admin_ticket.php?t_flag=2" class="book-btn smol-button" >
+                <a href="http://localhost/scripts/admin_q.php?a_flag=2" class="book-btn smol-button" >
                     Remove admin
                 </a>
-            </div> -->
+            </div>
         </div>
 
     </section>

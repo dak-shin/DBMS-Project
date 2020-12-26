@@ -94,7 +94,7 @@
 						</label>
 						<input type="hidden" name="t_id" value=$t_id>
 						<input type="hidden" name="cancel" value="yes">
-						<button type="submit" class="smol-button"> Yes</button>
+						<button type="submit" class="button"> Yes</button>
 						<a href="http://localhost/scripts/ticket.php" class="no-button ">No</a>
 					</form>
 				</div>`

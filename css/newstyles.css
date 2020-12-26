@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #edffff;
+  background-color: #f0f0f0;
   font-family: sans-serif;
   overflow-x: hidden;
 }
@@ -17,7 +17,7 @@ body {
   height: 8vh;
   align-items: center;
   justify-content: space-around;
-  background-color: #024789;
+  background-color: #000000;
   margin-left: auto;
   margin-right: auto;
   border-bottom: 1px solid black;
@@ -40,9 +40,9 @@ body {
   cursor: pointer;
 }
 .smol-button {
-  background-color: var(--book_btn);
+  background-color: #c8cacc;
   border: none;
-  color: white;
+  color: black;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -57,7 +57,7 @@ body {
   margin-top: auto;
 }
 .book-btn:hover{
-  background-color:#024789 ;
+  background-color:black ;
   color: white;
 }
 .logo {
@@ -112,7 +112,7 @@ body {
 .card {
   background-color: white;
   margin: 10px 10px 0 0;
-  height: 50vh;
+  height: 40vh;
   width: 15vw;
   padding: 20px 5px;
   display: flex;
@@ -162,7 +162,7 @@ body {
 .footer {
   position: relative;
   bottom: 0;
-  background-color: #024789;
+  background-color: #000000;
   display: flex;
   margin: 5px 12px;
   margin-bottom:0px;
@@ -211,16 +211,11 @@ button {
   padding: 5px;
   margin: 5px;
   border-radius: 3px;
-  background-color: #32aefff2;
+  background-color: black;
   border: 2px white solid;
-  color: black;
-}
-button:hover {
-  background-color: rgb(3, 99, 243);
-  border: none;
   color: white;
-  transition: all 50ms ease-in;
 }
+
 .login {
   transform: translate(10vw, 10vh);
 }
@@ -273,13 +268,13 @@ button:hover {
     cursor: pointer;
     padding: 8px;
     border-radius:5px;
-    background-color: #3434c3;
+    background-color: #000000;
     color: white;
     margin: 0px 10px;
 }
 .ip:checked + .ip-label {
-    background-color: #0b044b;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .details-list{
   list-style-type: none;
@@ -315,17 +310,19 @@ span{
   height: 15px;
   width: 50px;
   border-radius: 5px;
+  background-color: black;
 }
 .cancelbtn a{
   text-decoration: none;
+  background-color:black;
   color: white;
 }
-.cancelbtn:hover{
+/*.cancelbtn:hover{
   background-color: black;
   color: white;
-}
+}*/
 .no-button{
-  background-color: var(--book_btn);
+  background-color: black;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -340,26 +337,31 @@ span{
   width: 60px;
   height: 13px;
 }
-.no-button:hover{
-  background-color:#0363f3 ;
-}
+
 
 .dash-sec{
   margin: 10px;
-  height: 95vh;
+  height: 80vh;
 }
 .in-dash-sec{
   display: flex;
   justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  padding:40px 50px;
+
 }
-.ticket-part .concert-part{
+.ticket-part, .concert-part, .admin-part{
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  flex-basis: 45vw;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
+  border-right:2px solid black;
+  border-bottom:2px solid black;
 }
 
 #concert {
@@ -374,7 +376,7 @@ span{
   padding: 8px;
 }
 
-#concert tr:nth-child(even){background-color: #f2f2f2;}
+#concert tr:nth-child(even){background-color: #c9c9c9;}
 
 #concert tr:hover {background-color: #ddd;}
 
@@ -382,7 +384,7 @@ span{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #024789;
+  background-color: black;
   color: white;
 }
 

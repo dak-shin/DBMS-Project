@@ -34,6 +34,10 @@
             {
                 $pwd_same = false;
             }
+            elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+            {    
+                $valid_email = 'false';
+            }
             else
             {   
 
@@ -149,11 +153,15 @@
                     echo "<h2> Account created successfully</h2>";
                     $acco_create = '';
                 }
-                
+                if($valid_email == 'false')
+                {
+                    echo "<h2>Enter valid email</h2>";
+                    $valid_email = '';
+                }
                 
                 if ($pwd_same == false) 
                 {
-                    echo "<h3>Password do not match, Please re-enter</h3>";
+                    echo "<h2>Password do not match, Please re-enter</h2>";
                     $pwd_same = true;
                 }
             ?>
@@ -182,8 +190,9 @@
                 if($loggin_succ == true && isset($_SESSION['username']))
                 {
                     $name = $_SESSION['username'];
-                    echo "<h2>Login successfully, Hello $name</h2>";
-                    // header('Location: http://localhost/scripts/index.php');
+                    //echo "<h2>Login successfully, Hello $name</h2>";
+                    
+                    header('Location: http://localhost/scripts/index.php');
                     $loggin_succ = '';
                 }
                 

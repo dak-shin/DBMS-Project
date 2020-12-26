@@ -89,7 +89,7 @@
 				else
 				{
 					echo <<<HTML
-						<p class="booked" style="display: inline;">Ticket booked successfully</p>
+						<p class="booked" style="display: inline;">Ticket booked successfully, an email receipt has been sent</p>
 						<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
 							Show Tickets
 						</a>
@@ -155,7 +155,9 @@
 						</div>
 						<div class="cancelbtn smol-button">
 							<a href="http://localhost/scripts/cancel.php?ticket_id=$t_id" >Cancel</a>
+
 						</div>
+						
 					</div>
 					
 					HTML;
