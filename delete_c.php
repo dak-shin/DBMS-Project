@@ -13,6 +13,10 @@
     <?php  
         //require_once 'test.php';
         session_start();
+        if(!isset($_SESSION['username']) && isset($_SESSION['admin_name']))
+        {}
+        else
+            header('Location: http://localhost/scripts/logout.php');
                 
     ?>
     <section id="navigation-bar" class="navigation-bar">

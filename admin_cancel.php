@@ -12,15 +12,9 @@
 		<div class="logo">
 			OnePage
 		</div>
-		<div class="home-btn">
-			<a href="index.php" style="color: white;">Home</a>
-		</div>
-		<div class="home-btn2">
-			<a href="ticket.php" style="color: white;text-decoration: none;">MyTickets</a>
-		</div>
 		<?php
 			session_start();
-			if(!isset($_SESSION['username']) )
+			if(!isset($_SESSION['admin_name']) )
 				header('Location: http://localhost/scripts/login.php');
             require_once 'test.php';
             $loginbtn = <<<HTML
@@ -36,7 +30,7 @@
 					<div class="login-btn button">Logout</div>
 				</a>
 				HTML;
-            if(!isset($_SESSION['username']))
+            if(!isset($_SESSION['admin_name']))
                 echo $loginbtn;
             else
                 echo $logoutbtn;
@@ -88,14 +82,14 @@
 					</div>
 				</div>
 				<div class="conf" style="margin-left: 5px;">
-					<form action="http://localhost/scripts/cancel.php" method="post">
+					<form action="http://localhost/scripts/admin_cancel.php" method="post">
 						<label class="confirmation">
 							Are you sure you would like to cancel?
 						</label>
 						<input type="hidden" name="t_id" value=$t_id>
 						<input type="hidden" name="cancel" value="yes">
 						<button type="submit" class="smol-button"> Yes</button>
-						<a href="http://localhost/scripts/ticket.php" class="no-button ">No</a>
+						<a href="http://localhost/scripts/admin_show.php" class="no-button ">No</a>
 					</form>
 				</div>`
 				HTML;
@@ -111,8 +105,8 @@
 			else 
 			{
 				echo <<<HTML
-						<p class="booked" style="display: inline;">Ticket has been cancelled, refund will be initiated shortly</p>
-						<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
+						<p class="booked" style="display: inline;">Ticket has been cancelled, Cancellation Information email has been sent to respective customer, refund process will be intiated shortly. </p>
+						<a href="http://localhost/scripts/admin_show.php" class="book-btn smol-button" style="margin-left: auto;">
 							Show Tickets
 						</a>
 					HTML;

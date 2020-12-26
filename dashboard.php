@@ -139,11 +139,17 @@
                 </a><br>
                 <a href="http://localhost/scripts/admin_ticket.php?t_flag=2" class="book-btn smol-button" >
                     See Revenue
-                </a><br>
-                <a href="http://localhost/scripts/admin_ticket.php?t_flag=3" class="book-btn smol-button" >
-                    Cancel Tickets
                 </a>
             </div>
+
+            <!-- <div class="admin-part">
+                <a href="http://localhost/scripts/admin_ticket.php?t_flag=1" class="book-btn smol-button" >
+                    Add Admin
+                </a><br>
+                <a href="http://localhost/scripts/admin_ticket.php?t_flag=2" class="book-btn smol-button" >
+                    Remove admin
+                </a>
+            </div> -->
         </div>
 
     </section>

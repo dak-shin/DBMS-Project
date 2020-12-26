@@ -11,12 +11,13 @@
 
 <body>
     <?php  
-         require_once 'test.php';
+        require_once 'test.php';
         session_start();
+        $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
         if(!isset($_SESSION['username']) && isset($_SESSION['admin_name']))
         {
             require_once 'test.php';
-            $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+            
 
             function san_ip($var)
             {
@@ -25,6 +26,7 @@
                 $var = strip_tags($var);
                 return $var; 
             }
+            
             // if(isset($_POST['create']))
             // {   
             //     $result = '';
@@ -84,8 +86,8 @@
         }
         else
         {
-            echo "Please log in as the admin";
-            //header('Location: http://localhost/scripts/logout.php');
+           
+            header('Location: http://localhost/scripts/logout.php');
         }
                 
     ?>
@@ -117,44 +119,55 @@
     </section>
 
     <section class="main-sec">
-     
-
-        <?php
-
-            require_once 'test.php';
-            $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
-            $flag = $_GET['t_flag'];
-            switch ($flag) {
-                case 1 :
-                    //echo "show all tickets";
-
-                    header('Location: http://localhost/scripts/admin_show.php');
-
-
-                    break;
-
-                case 2 :
-                    //echo "see revenue";
-
-                    header('Location: http://localhost/scripts/admin_revenue.php');
-
-                    break;
-
-                default:
-                    
-                    break;
-            }
-
-        ?>
-
 
         <a href="http://localhost/scripts/dashboard.php" class="book-btn smol-button" >
             Dashboard
         </a>
 
-        <div class="main-part">
-            
-        </div>
+        <?php
+
+            require_once 'test.php';
+            $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+
+            $show_revenue_query ="select concert_id, sum(amt) as revenue from ticket group by concert_id order by concert_id desc;";
+            $result = $connection->query($show_revenue_query);
+            $rows = $result->num_rows;
+
+            echo <<<HTML
+                    <br>
+                    <br>
+                    <table id="concert">
+                        <tr>
+                            <th>Concert id</th>
+                            <th>Total Revenue</th>
+                        </tr>
+                HTML;
+
+            for ($i=0; $i <$rows ; $i++) 
+            { 
+                
+                $arr = $result->fetch_assoc();
+                $id = $arr['concert_id']; 
+                $rev = $arr['revenue'];              //concert_id
+                
+                echo <<<HTML
+                    <tr>
+                        <td>$id</td>
+                        <td>Rs. $rev</td>
+                        
+                    </tr>
+                HTML;
+
+            }
+
+            echo "</table>";
+
+            $total_query = "select sum(amt) as total from ticket";
+            $result1 = $connection->query($total_query);
+            $total = $result1->fetch_assoc()['total'];          
+            echo "<br><br><span>Total Revenue : </span>Rs. $total";
+
+        ?>
 
     </section>
 

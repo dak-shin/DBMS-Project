@@ -85,8 +85,8 @@
         }
         else
         {
-            echo "Please log in as the admin";
-            //header('Location: http://localhost/scripts/logout.php');
+           
+            header('Location: http://localhost/scripts/logout.php');
         }
                 
     ?>

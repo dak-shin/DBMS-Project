@@ -350,12 +350,16 @@ span{
 }
 .in-dash-sec{
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .ticket-part .concert-part{
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   flex-basis: 45vw;
+  align-items: center;
+  justify-content: center;
 }
 
 #concert {
@@ -384,5 +388,6 @@ span{
 
 .main-sec{
   margin: 10px;
-  height: 95vh;
+  height: auto;
+  min-height: 95vh;
 }
