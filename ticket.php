@@ -59,7 +59,7 @@
 
 			$type = $_POST['level']; //type id
 			
-
+			
         	$size = $_POST['number']; //number of seats 
         	$conc_name = $_SESSION['concert_name'];
 
@@ -81,7 +81,7 @@
 			if(!$result3) die($connection->error);
 			else 
 			{
-				$amt_query = "update ticket t, ticket_type tt set t.amt = tt.ticket_price * t.seat_no where t.type_id = tt.type_id;";
+				$amt_query = "update ticket t, ticket_type tt set t.amt = (1.08*(tt.ticket_price * t.seat_no)+30) where t.type_id = tt.type_id;";
 				$result4 = $connection->query($amt_query);
 				if (!$result4) {
 					die($connection->error);

@@ -68,7 +68,7 @@
         	$concert_date = $arr['concert_date']; 		//Concert Date 
         	$merch_type = $arr['merch_type'];         //merch_type
         	$spon_id = $arr['spon_id'];	
-        	$time = $arr['timming'];	
+        	$time = $arr['timming'];	//time
 
         	$artist_query = "Select * from artists where artist_id = '$artist_id' ";
         	$result2 = $connection->query($artist_query);
@@ -117,7 +117,7 @@
 							</li>	
 						</ul>
 					</div>
-					<form class="booking-form" action="ticket.php" method="post">
+					<form class="booking-form" action="payment.php" method="post">
 						<div class="container">
 							<div class="level form">
 								<label class="labels" for="level">Seating class : </label>
@@ -136,7 +136,7 @@
 								<input type="radio" id="bronze" name="level" value="bronze" class="ip" required>
 								<label for="bronze" class="ip-label">Bronze</label>
 								<br><br><br>
-								<label for="number">Number of seats : </label><br>
+								<label for="number">Number of Seats : </label><br>
 								<select class="input" name="number" >
 								  <option value="1">ONE</option>
 								  <option value="2">TWO</option>
@@ -149,9 +149,21 @@
 								  <option value="9">NINE</option>
 								  <option value="10">TEN</option>
 								</select>
+								<label for="payment">Payment Method : </label><br><br>
+								<input type="radio" id="card"  name="payment" value="Credit/Debit Card" class="ip" required>
+								<label for="card" class="ip-label">Credit/Debit Card</label>
+
+								<input type="radio" id="UPI" name="payment" value="UPI " class="ip" required>
+								<label for="UPI" class="ip-label">UPI</label>
+
+								<input type="radio" id="net-banking" name="payment" value="net-banking" class="ip" required>
+								<label for="net-banking" class="ip-label">Net Banking</label>
 							</div>
-							
-							<input type="hidden" name="book" value="yes">
+							<input type="hidden" name="" value="$id">
+							<input type="hidden" name="venue-name" value="$venue_name">
+							<input type="hidden" name="concert-name" value="$conc_name">
+							<input type="hidden" name="concert-date" value="$concert_date">
+							<input type="hidden" name="time" value="$time">
 							<button type="submit" class="pay-btn">
 								Proceed to Pay
 							</button>
