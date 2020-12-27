@@ -93,6 +93,10 @@
                             echo "<h3> Please enter valid email</h3>";
                         }
 
+                        if(isset($_GET['valid_id']))
+                        {
+                            echo "<h3> Admin name already taken</h3>";
+                        }
                         break;
 
                     case 2:
@@ -143,19 +147,29 @@
 
                     if (filter_var($admin_email, FILTER_VALIDATE_EMAIL))
                     {
-                        $admin_add_query = "Insert into admin (email, admin_name, password) values ('$admin_email','$admin_name','$admin_pwd' )";
-                        $result = $connection->query($admin_add_query);
-                        if(!$result) die($connection->error);
-                        else 
+
+                        $admin_check_query = "Select * from admin where admin_name = '$admin_name'";
+                        $result = $connection->query($admin_check_query);
+                        if($result->num_rows == 0)
                         {
-                            echo <<<HTML
+                            $admin_add_query = "Insert into admin (email, admin_name, password) values ('$admin_email','$admin_name','$admin_pwd' )";
+                            $result = $connection->query($admin_add_query);
+                            if(!$result) die($connection->error);
+                            else 
+                            {
+                                echo <<<HTML
 
-                                Admin Account added successfully 
-                                <a href="http://localhost/scripts/dashboard.php" class="book-btn smol-button" style="margin-left: auto;">
-                                    Dashboard
-                                </a>
+                                    Admin Account added successfully 
+                                    <a href="http://localhost/scripts/dashboard.php" class="book-btn smol-button" style="margin-left: auto;">
+                                        Dashboard
+                                    </a>
 
-                            HTML;
+                                HTML;
+                            }
+                        }
+                        else
+                        {
+                            header('Location: http://localhost/scripts/admin_q.php?a_flag=1&valid_id="false"');
                         }
                     }
                     else

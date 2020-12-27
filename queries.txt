@@ -43,7 +43,7 @@
 
 	create table customer(customer_id int not null auto_increment,
     email varchar(128),
-    user_name varchar(128),
+    user_name varchar(128) unique,
     password varchar(128),
     primary key(customer_id));
 
@@ -74,10 +74,19 @@
     Insert into artists(artist_name, genre) values ('Local Train','Rock');
     Insert into artists(artist_name, genre) values ('Nucleya','EDM');
     Insert into artists(artist_name, genre) values ('Iboga Records','Hip Hop');
-    Insert into artists(artist_name, genre) values ('DeepDictionary','Hip Hop');
     Insert into artists(artist_name, genre) values ('Metal Nights','Rock');
     Insert into artists(artist_name, genre) values ('Soulmate','Rock');
     Insert into artists(artist_name, genre) values ('Tidal Wave','Hip Hop');
+
+    Insert into artists(artist_name, genre) values ('Parikrama','Rock');
+    Insert into artists(artist_name, genre) values ('Coshish','Rock');
+    Insert into artists(artist_name, genre) values ('Underground Authority','Rap Rock');
+    Insert into artists(artist_name, genre) values ('Inner Sanctum','Metal');
+    Insert into artists(artist_name, genre) values ('Pineapple Express','Fusion');
+    Insert into artists(artist_name, genre) values ('Brodha V','Rap');
+    Insert into artists(artist_name, genre) values ('Raftaar','Rap');
+    Insert into artists(artist_name, genre) values ('Raghu Dixit','Folk Rock');
+
 
     Insert into venue values ('Royal_Opera_House','Mumbai','Opera House',400);
     Insert into venue values('blueFROG','Bangalore','Indoor', 100);
@@ -89,6 +98,10 @@
     Insert into venue values('SkyDeck','Sheshadripuram','Indoor',80);
     Insert into venue values('Dunder Mifflin','Scranton','Outdoor',20);
     Insert into venue values('Manpho Convention Centre','Bangalore','Outdoor',1000);
+    Insert into venue values('WhiteField','Bangalore','Outdoor',2000);
+    Insert into venue values('Heritage Hall','Pune','Outdoor',1800);
+    Insert into venue values('Phoneix Marketcity','Bangalore','Indoor',300);
+
 
     Insert into ticket_type (seating_area, ticket_price) values ('Diamond', 1550);
     Insert into ticket_type (seating_area, ticket_price) values ('Platinum', 899);
@@ -126,9 +139,21 @@
 
     Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Sunburn','Manpho Convention Centre',7,'2021-02-15','Stickers',1);
 
-    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Sunburn','Manpho Convention Centre',7,'2021-02-16','Stickers',1);
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Gully Gang ft.Divine','WhiteField',3,'2021-03-15','Shoes',1);
 
-    Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id) values ('Sunburn','Manpho Convention Centre',7,'2021-02-17','Stickers',1);
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, spon_id) values ('Emiway Bantai Live in Pune','Heritage Hall',4,'2021-01-08',1);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, spon_id) values ('The Local Train','Hard Rock Cafe',6,'2020-12-29',1);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date,merch_type, spon_id) values ('The Local Train','Hard Rock Cafe',6,'2020-12-29',1);
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date,merch_type, spon_id, timming) values ('The Raghu Dixit Project','SkyDeck',20,'2020-12-29','T-shirt',1,'7:00 PM');
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date,merch_type, spon_id, timming) values ('Brodha V & Myris 9XO EDM Night','Pebble',18,'2021-01-21','T-shirt',3,'8:45 PM');
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, spon_id, timming) values ('Parikrama Live','Hard Rock Cafe',13,'2021-01-21',5,'8:45 PM');
+
+    Insert into concert(concert_name, venue_name, artist_id, concert_date, spon_id, timming) values ('Raftaar – UNDEFEATED LIVE','Phoneix Marketcity',19,'2021-02-21',5,'9:45 PM');
 
     Update concert set timming = '8:00 PM' where concert_id = 1;
     Update concert set timming = '6:30 PM' where concert_id = 3;

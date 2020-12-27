@@ -45,7 +45,7 @@
                 $query = "Insert into customer(email, user_name, password) values ('$email','$user_name','$pwd')";
                 $result = $connection->query($query);
                 if(!$result) 
-                    echo "<h3> $connection->error </h3>";
+                    $uniq_user = false;
                 else 
                     $acco_create = true;
             }
@@ -163,6 +163,12 @@
                 {
                     echo "<h2>Password do not match, Please re-enter</h2>";
                     $pwd_same = true;
+                }
+
+                if($uniq_user == false)
+                {
+                    echo "Username already taken";
+                    $uniq_user = true;
                 }
             ?>
         </div>

@@ -145,6 +145,9 @@
 								  <option value="5">FIVE</option>
 								  <option value="6">SIX</option>
 								  <option value="7">SEVEN</option>
+								  <option value="8">EIGHT</option>
+								  <option value="9">NINE</option>
+								  <option value="10">TEN</option>
 								</select>
 							</div>
 							
