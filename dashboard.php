@@ -129,9 +129,9 @@
                     Insert Concert
                 </a>
                 <br>
-                <a href="http://localhost/scripts/admin_concert.php?c_flag=3" class="book-btn smol-button" >
+                <!-- <a href="http://localhost/scripts/admin_concert.php?c_flag=3" class="book-btn smol-button" >
                     Delete Concert
-                </a>
+                </a> -->
             </div>
 
             <div class="ticket-part">

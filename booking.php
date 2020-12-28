@@ -120,7 +120,7 @@
 					<form class="booking-form" action="payment.php" method="post">
 						<div class="container">
 							<div class="level form">
-								<label class="labels" for="level">Seating class : </label>
+								<label class="labels" for="level">Ticket class : </label>
 								<input type="radio" id="Diamond" name="level" value="Diamond " class="ip" required>
 								<label for="Diamond" class="ip-label">Diamond</label>
 

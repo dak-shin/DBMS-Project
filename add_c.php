@@ -63,7 +63,7 @@
             $insert_query = "Insert into concert(concert_name, venue_name, artist_id, concert_date, merch_type, spon_id, timming) values ('$concert_name','$venue_name',$artist_id,'$concert_date','$merch_type',$spon_id, '$timming')";
 
             $result = $connection->query($insert_query);
-            if(!$result) die($connection->error);
+            if(!$result) echo "Please Enter the correct details of the concert ";
             else echo "Concert added successfully";
         
         ?>

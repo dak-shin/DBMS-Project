@@ -125,6 +125,9 @@
 
         <?php
 
+            require_once 'test.php';
+            $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
+
             $flag = $_GET['c_flag'];
             switch ($flag) {
                 case 1 :
@@ -204,21 +207,101 @@
                             
                             <label for="concert_name">Concert Name</label>
                             <input type="text" class="input" name="concert_name" autocomplete="off" required>
-
+    
                             <label for="venue_name">Venue Name</label>
-                            <input type="text" class="input" name="venue_name" autocomplete="off" required>
+                            <select class="input" name="venue_name" required>
+                    HTML;
+
+                        $venue_query = "Select * from venue";
+                        $result = $connection->query($venue_query);
+                        if(!$result) die($connection->error);
+                        $rows = $result->num_rows;
+
+                        for($i = 0 ; $i < $rows ; $i++)
+                        {
+                            $arr = $result->fetch_assoc();
+                            $v_name = $arr['venue_name'];
+                            $v_location = $arr['venue_location'];
+                            echo <<<HTML
+                                <option value="$v_name">$v_name - $v_location</option>
+                                HTML;
+                        }
+
+                    echo <<<HTML
+                            </select>
+                            
 
                             <label for="artist_id">Artist ID</label>
-                            <input type="text" class="input" name="artist_id" autocomplete="off" required>
+                            <select class="input" name="artist_id" required>
+
+                    HTML;
+
+                        $artist_query = "Select * from artists";
+                        $result = $connection->query($artist_query);
+                        if(!$result) die($connection->error);
+                        $rows = $result->num_rows;
+
+                        for($i = 0 ; $i < $rows ; $i++)
+                        {
+                            $arr = $result->fetch_assoc();
+                            $art_id = $arr['artist_id'];
+                            $art_name = $arr['artist_name'];
+                            echo <<<HTML
+                                <option value="$art_id">$art_id - $art_name</option>
+                                HTML;
+                        }
+
+
+                    echo <<<HTML
+                            </select>
 
                             <label for="concert_date">Concert Date</label>
                             <input type="text" class="input" name="concert_date" autocomplete="off" required>
 
                             <label for="merch_type">Merch Type</label>
-                            <input type="text" class="input" name="merch_type" autocomplete="off" required>
+                            <select class="input" name="merch_type" required>
+                    HTML;
 
+                        $merch_query = "Select * from merch";
+                        $result = $connection->query($merch_query);
+                        if(!$result) die($connection->error);
+                        $rows = $result->num_rows;
+
+                        for($i = 0 ; $i < $rows ; $i++)
+                        {
+                            $arr = $result->fetch_assoc();
+                            $merch_name = $arr['merch_type'];
+                            echo <<<HTML
+                                <option value="$merch_name">$merch_name</option>
+                                HTML;
+                        }
+
+                    echo <<<HTML
+                                
+                            </select>
                             <label for="spon_id">Sponsor ID</label>
-                            <input type="text" class="input" name="spon_id" autocomplete="off" required>
+                            <select class="input" name="spon_id" required>
+
+                    HTML;
+
+                        $spon_query = "Select * from sponsors";
+                        $result = $connection->query($spon_query);
+                        if(!$result) die($connection->error);
+                        $rows = $result->num_rows;
+
+                        for($i = 0 ; $i < $rows ; $i++)
+                        {
+                            $arr = $result->fetch_assoc();
+                            $spon_name = $arr['spon_name'];
+                            $spon_id = $arr['spon_id'];
+                            echo <<<HTML
+                                <option value="$spon_id">$spon_id - $spon_name</option>
+                                HTML;
+                        }
+
+                    echo <<<HTML
+                                
+                            </select>
 
                             <label for="timming">Timming</label>
                             <input type="text" class="input" name="timming" autocomplete="off" required>

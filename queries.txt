@@ -86,6 +86,7 @@
     Insert into artists(artist_name, genre) values ('Brodha V','Rap');
     Insert into artists(artist_name, genre) values ('Raftaar','Rap');
     Insert into artists(artist_name, genre) values ('Raghu Dixit','Folk Rock');
+    Insert into artists(artist_name, genre) values ('Kevin Malone','Rock');
 
 
     Insert into venue values ('Royal_Opera_House','Mumbai','Opera House',400);

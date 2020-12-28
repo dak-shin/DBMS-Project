@@ -51,12 +51,33 @@
         <a href="http://localhost/scripts/dashboard.php" class="book-btn smol-button" >
             Dashboard
         </a>
-
+        <br><br>
+        <form action="admin_show.php" method="POST" style="margin-left: 10px;display: inline;">
+            <span>Sort By : </span>
+            <input type="hidden" name="sort_by_c_id" value="yes">
+            <button class="button" type="submit" style="margin-left: 10px">ConcertID</button>
+        </form>
+        <form action="admin_show.php" method="POST" style="margin-left: 10px;display: inline;">
+            <input type="hidden" name="sort_by_cust_id" value="yes">
+            <button class="button" type="submit" style="margin-left: 10px">CustomerID</button>
+        </form>
+        <br><br>
         <?php
             
             require_once 'test.php';
             $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
             $show_query = "Select * from ticket ";
+
+            if(isset($_POST['sort_by_cust_id']))
+            {
+                $show_query = 'Select * from ticket order by customer_id';
+            }
+
+            if(isset($_POST['sort_by_c_id']))
+            {
+                $show_query = 'Select * from ticket order by concert_id';
+            }
+
             $result1 = $connection->query($show_query);
             if(!$result1) die($connection->error);
             $rows = $result1->num_rows;

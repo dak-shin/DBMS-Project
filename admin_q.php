@@ -52,6 +52,7 @@
         
 
         <?php
+            
             require_once 'test.php';
             $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
             if(isset($_GET['a_flag'])) 
@@ -111,8 +112,33 @@
                                 <form action="admin_q.php" method="post" >
 
                                      <label for="admin_id">Admin ID</label>
-                                     <input type="text" name="admin_id" required autocomplete="off" class="input">
+                                     
+                                     <select class="input" name="admin_id" required>
+                        HTML;
 
+                            $admin_query = "Select * from admin";
+                            $result = $connection->query($admin_query);
+                            if(!$result) die($connection->error);
+                            $rows = $result->num_rows;
+
+                            for($i = 0 ; $i < $rows ; $i++)
+                            {
+                                $arr = $result->fetch_assoc();
+                                
+                                $admin_id = $arr['admin_id'];
+
+                                if($admin_id == $_SESSION['admin_id'])
+                                    continue;
+
+                                echo <<<HTML
+                                    <option value="$admin_id">$admin_id</option>
+                                    HTML;
+                            }
+
+
+
+                        echo <<<HTML
+                                    </select>
                                      <input type="hidden" name="delete" value="yes">
 
                                      <button type="submit">Delete</button>

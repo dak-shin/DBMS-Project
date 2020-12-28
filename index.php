@@ -53,12 +53,47 @@
 				$user = $_SESSION['username'];
 			echo <<<HTML
 					<p class="card-heading">Musical Events near you, $user</p> 
+
+					<form action="index.php" method="POST" style="margin-left: 20px;display: inline;">
+						<span>Sort By : </span>
+						<input type="hidden" name="sort_by_date" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Date</button>
+					</form>
+					<form action="index.php" method="POST" style="margin-left: 10px;display: inline;">
+						<input type="hidden" name="sort_by_time" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Time</button>
+					</form>
+					<form action="index.php" method="POST" style="margin-left: 10px;display: inline;">
+						<input type="hidden" name="sort_by_name" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Name</button>
+					</form>
+					<form action="index.php" method="POST" style="margin-left: 10px;display: inline;">
+						<button class="button" type="submit" style="margin-left: 10px">None</button>
+					</form>
 				HTML;
 			}
 			else
 			{
 				echo <<<HTML
 					<p class="card-heading">Upcoming music events</p> 
+
+					<form action="index.php" method="POST" style="margin-left: 20px;display: inline;">
+						<span>Sort By : </span>
+						<input type="hidden" name="sort_by_date" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Date</button>
+					</form>
+					<form action="index.php" method="POST" style="margin-left: 10px;display: inline;">
+						<input type="hidden" name="sort_by_time" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Time</button>
+					</form>
+					<form action="index.php" method="POST" style="margin-left: 10px;display: inline;">
+						<input type="hidden" name="sort_by_name" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Name</button>
+					</form>
+					<form action="index.php" method="POST" style="margin-left: 10px;display: inline;">
+						
+						<button class="button" type="submit" style="margin-left: 10px">None</button>
+					</form>
 				HTML;
 			}
 	?>
@@ -79,6 +114,22 @@
 	        $row = '';
 	        
 	        $query = 'Select * from concert';
+
+	        if(isset($_POST['sort_by_date']))
+	        {
+	        	$query = 'Select * from concert order by concert_date';
+	        }
+
+	        if(isset($_POST['sort_by_time']))
+	        {
+	        	$query = 'Select * from concert order by timming';
+	        }
+
+	        if(isset($_POST['sort_by_name']))
+	        {
+	        	$query = 'Select * from concert order by concert_name';
+	        }
+
 	        $result = $connection->query($query);
 	        if(!$result) die($connection->error);
 	        $rows = $result->num_rows;
