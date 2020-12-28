@@ -188,7 +188,7 @@
 
 	    <div class="Location footer-div">
 	      <h4 style="font-weight: bolder;">Our address</h4>
-	      <p>1725,<br> Slough Avenue <br> Scranton, Pennsylvania</p>
+	      <p>1725,<br> Banashankri 3rd-stage <br> Bangalore, Karnataka</p>
 	    </div>
 
 	    <div class="review footer-div">

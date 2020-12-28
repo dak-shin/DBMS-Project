@@ -79,27 +79,27 @@
     </section>
 
     <section class="footer">
+
         <div class="social footer-div">
-            <h4>Social Links</h4>
-            <a href="#" class="Facebook"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>
-            <a href="#" class="Instagram"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
-            <a href="#" class="Twitter"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
-            <a href="#" class="Gmail"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
-            <a href="#" class="youtube"><span class="fa fa-youtube-play fa-lg" aria-hidden="true"></span></a>
+          <h4>Social Links</h4>
+          <a href="#" class="Facebook"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i></a>
+          <a href="#" class="Instagram"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
+          <a href="#" class="Twitter"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a>
+          <a href="#" class="Gmail"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+          <a href="#" class="youtube"><span class="fa fa-youtube-play fa-lg" aria-hidden="true"></span></a>
         </div>
 
         <div class="Location footer-div">
-            <h4 style="font-weight: bolder;">Our address</h4>
-            <p>1725,<br> Slough Avenue <br> Scranton, Pennsylvania</p>
+          <h4 style="font-weight: bolder;">Our address</h4>
+          <p>1725,<br> Banashankri 3rd-stage <br> Bangalore, Karnataka</p>
         </div>
 
         <div class="review footer-div">
             <h4>Didn't like it?</h4>
-            Help us understand why.
+            Help us understand why
         </div>
 
     </section>
     <script type="text/javascript" src="./js/scripts.js"></script>
 </body>
-
 </html>
