@@ -113,9 +113,41 @@
         	$customer_id = $result->fetch_assoc()['customer_id'];
 
         	$show_query = "Select * from ticket where customer_id = $customer_id ";
+
+        	if(isset($_POST['sort_by_date']))
+        	{
+        		$show_query = "Select t.ticket_id, t.type_id, t.venue_location, t.seat_no, t.concert_id, t.customer_id, t.amt from ticket t, concert c where customer_id = $customer_id and t.concert_id = c.concert_id order by c.concert_date";
+        	}
+        	if(isset($_POST['sort_by_time']))
+        	{
+        		$show_query = "Select t.ticket_id, t.type_id, t.venue_location, t.seat_no, t.concert_id, t.customer_id, t.amt from ticket t, concert c where customer_id = $customer_id and t.concert_id = c.concert_id order by c.timming";
+        	}
+        	if(isset($_POST['sort_by_name']))
+        	{
+        		$show_query = "Select t.ticket_id, t.type_id, t.venue_location, t.seat_no, t.concert_id, t.customer_id, t.amt from ticket t, concert c where customer_id = $customer_id and t.concert_id = c.concert_id order by c.concert_name";
+        	}
+
+
         	$result1 = $connection->query($show_query);
         	if(!$result1) die($connection->error);
         	$rows = $result1->num_rows;
+
+        	echo <<<HTML
+						<form action="ticket.php" method="POST" style="margin-left: 20px;display: inline;">
+						<span>Sort By : </span>
+						<input type="hidden" name="sort_by_date" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Date</button>
+					</form>
+					<form action="ticket.php" method="POST" style="margin-left: 10px;display: inline;">
+						<input type="hidden" name="sort_by_time" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Time</button>
+					</form>
+					<form action="ticket.php" method="POST" style="margin-left: 10px;display: inline;">
+						<input type="hidden" name="sort_by_name" value="yes">
+						<button class="button" type="submit" style="margin-left: 10px">Name</button>
+					</form>
+
+			HTML;
 
 
         	if($rows>0)
