@@ -45,7 +45,7 @@
 
 	<section class="ticket-sec" >
 	<?php
-
+		//require_once './phpqrcode/qrlib.php';
 		if(isset($_POST['book']))
 		{
 			require_once 'test.php';
@@ -89,7 +89,7 @@
 				else
 				{
 					echo <<<HTML
-						<p class="booked" style="display: inline;">Ticket booked successfully, an email receipt has been sent</p>
+						<p class="booked" style="display: inline;">Ticket booked successfully</p>
 						<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
 							Show Tickets
 						</a>
@@ -184,6 +184,11 @@
 							<div><span>Date : </span>$c_date</div>
 							<div><span>User ID : </span>$cu_id</div>
 							<div><span>Total Amount : </span>Rs.$t_amt</div>
+							<div><span>Show QR Code : </span>
+								<div class="cancelbtn smol-button">
+									<a href="http://localhost/scripts/qr.php?ticket_id=$t_id" target="_blank">QRcode</a>
+								</div>
+							</div>
 						</div>
 						<div class="cancelbtn smol-button">
 							<a href="http://localhost/scripts/cancel.php?ticket_id=$t_id" >Cancel</a>
