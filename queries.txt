@@ -102,6 +102,7 @@
     Insert into venue values('WhiteField','Bangalore','Outdoor',2000);
     Insert into venue values('Heritage Hall','Pune','Outdoor',1800);
     Insert into venue values('Phoneix Marketcity','Bangalore','Indoor',300);
+    Insert into venue values('Canvas Club','Bangalore','Indoor',5);
 
 
     Insert into ticket_type (seating_area, ticket_price) values ('Diamond', 1550);

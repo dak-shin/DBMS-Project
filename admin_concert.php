@@ -256,7 +256,7 @@
                     echo <<<HTML
                             </select>
 
-                            <label for="concert_date">Concert Date</label>
+                            <label for="concert_date">Concert Date (YYYY-MM-DD)</label>
                             <input type="text" class="input" name="concert_date" autocomplete="off" required>
 
                             <label for="merch_type">Merch Type</label>
@@ -304,7 +304,7 @@
                                 
                             </select>
 
-                            <label for="timming">Timming</label>
+                            <label for="timming">Time (HH:MM AM/PM)</label>
                             <input type="text" class="input" name="timming" autocomplete="off" required>
 
                             <button type="submit">Insert</button>

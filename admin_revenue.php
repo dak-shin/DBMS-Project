@@ -129,7 +129,7 @@
             require_once 'test.php';
             $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
 
-            $show_revenue_query ="select concert_id, sum(amt) as revenue from ticket group by concert_id order by concert_id desc;";
+            $show_revenue_query ="select t.concert_id, sum(amt) as revenue, c.concert_date as date  from ticket t, concert c where t.concert_id = c.concert_id group by concert_id order by concert_date desc;";
             $result = $connection->query($show_revenue_query);
             $rows = $result->num_rows;
 
@@ -139,7 +139,10 @@
                     <table id="concert">
                         <tr>
                             <th>Concert id</th>
+                            
                             <th>Total Revenue</th>
+
+                            <th>Date</th>
                         </tr>
                 HTML;
 
@@ -148,13 +151,14 @@
                 
                 $arr = $result->fetch_assoc();
                 $id = $arr['concert_id']; 
+                $date = $arr['date'];
                 $rev = $arr['revenue'];              //concert_id
                 
                 echo <<<HTML
                     <tr>
                         <td>$id</td>
                         <td>Rs. $rev</td>
-                        
+                        <td>$date</td>
                     </tr>
                 HTML;
 

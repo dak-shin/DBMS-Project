@@ -164,10 +164,36 @@
 							<input type="hidden" name="concert-name" value="$conc_name">
 							<input type="hidden" name="concert-date" value="$concert_date">
 							<input type="hidden" name="time" value="$time">
-							<button type="submit" class="pay-btn">
-								Proceed to Pay
-							</button>
-						</div>
+
+			HTML;
+			
+			$check_query = "Select sum(seat_no) as total from ticket t, concert c where c.concert_id = $id and t.concert_id = c.concert_id";
+			$result = $connection->query($check_query);
+			$total_num = $result->fetch_assoc()['total'];
+			//echo $total_num;
+
+			$number_query = "select * from venue where venue_name = '$venue_name'";
+			$result2 = $connection->query($number_query);
+			if(!$result2) die($connection->error);
+			$capacity = $result2->fetch_assoc()['capacity'];
+
+			if($total_num >= $capacity-1 )
+			{
+				echo "<h1>HouseFull</h1>";
+				
+			}
+
+			else
+			{
+				echo <<<HTML
+						<button type="submit" class="pay-btn">
+							Proceed to Pay
+						</button>
+					</div>
+				HTML;
+			}
+
+			echo <<<HTML
 					</form>
 					<div class="more-deets">
 						

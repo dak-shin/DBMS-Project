@@ -104,20 +104,49 @@
 		}
 		elseif(isset($_POST['cancel']) && isset($_POST['t_id']))
 		{
-			$id = $_POST['t_id'];
-			$cancel_query = "Delete from ticket where ticket_id = '$id'";
-			$result = $connection->query($cancel_query);
-			if(!$result) die($connection->error);
-			else 
-			{
-				echo <<<HTML
-						<p class="booked" style="display: inline;">Ticket has been cancelled, refund will be initiated shortly</p>
-						<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
-							Show Tickets
-						</a>
-					HTML;
+			$t_id = $_POST['t_id'];
 
-			}
+			$show_query = "Select * from ticket where ticket_id = $t_id ";
+			$result = $connection->query($show_query);
+			$arr = $result->fetch_assoc();
+			$c_id = $arr['concert_id'];
+
+			$get_concert_date = "Select * from concert where concert_id = '$c_id'";
+			$result1 = $connection->query($get_concert_date);
+			$arr = $result1->fetch_assoc();
+			if(!$result1) die($connection->error);
+			else
+			{
+				$date1 = (string)$arr['concert_date'];
+				$date2 = date("Y-m-d");
+
+				$diff = abs(strtotime($date2) - strtotime($date1));
+
+				$years = floor($diff / (365*60*60*24));
+				$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+				$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+				if($years == 0 && $months == 0 && $days <= 1 )
+				{
+					echo "<h2> Ticket cannot be cancelled one day before the event </h2>";
+				} 
+				else
+				{
+					$cancel_query = "Delete from ticket where ticket_id = '$id'";
+					$result = $connection->query($cancel_query);
+					if(!$result) die($connection->error);
+					else 
+					{
+						echo <<<HTML
+								<p class="booked" style="display: inline;">Ticket has been cancelled, refund will be initiated shortly</p>
+								<a href="http://localhost/scripts/ticket.php" class="book-btn smol-button" style="margin-left: auto;">
+									Show Tickets
+								</a>
+							HTML;
+
+					}
+				}
+			}	
 		}
 	?>
 
