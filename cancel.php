@@ -132,7 +132,7 @@
 				} 
 				else
 				{
-					$cancel_query = "Delete from ticket where ticket_id = '$id'";
+					$cancel_query = "Delete from ticket where ticket_id = '$t_id'";
 					$result = $connection->query($cancel_query);
 					if(!$result) die($connection->error);
 					else 

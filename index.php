@@ -164,9 +164,13 @@
 	        	$name = $row['concert_name'];
 	        	$time = $row['timming'];
 	        	$date = $row['concert_date'];
-	        	$url = "./img/c_poster".$c_id.".jpg";
+				$url = "./img/c_poster".$c_id.".jpg";
+	        	$date1 = (string)$date;
+				$date2 = date("Y-m-d");
 
-	        	echo <<<HTML
+				if ($date1 >= $date2) 
+				{
+				    echo <<<HTML
 					<div class="card">
 						<img src=$url class="c-image">
 						<div class="c-name">
@@ -184,7 +188,7 @@
 						</a>
 					</div> 
 					HTML;
-
+				} 
 
 	        }
 

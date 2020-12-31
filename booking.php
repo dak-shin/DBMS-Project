@@ -138,46 +138,101 @@
 								<br><br><br>
 								<label for="number">Number of Seats : </label><br>
 								<select class="input" name="number" >
-								  <option value="1">ONE</option>
-								  <option value="2">TWO</option>
-								  <option value="3">THREE</option>
-								  <option value="4">FOUR</option>
-								  <option value="5">FIVE</option>
-								  <option value="6">SIX</option>
-								  <option value="7">SEVEN</option>
-								  <option value="8">EIGHT</option>
-								  <option value="9">NINE</option>
-								  <option value="10">TEN</option>
-								</select>
-								<label for="payment">Payment Method : </label><br><br>
-								<input type="radio" id="card"  name="payment" value="Credit/Debit Card" class="ip" required>
-								<label for="card" class="ip-label">Credit/Debit Card</label>
-
-								<input type="radio" id="UPI" name="payment" value="UPI " class="ip" required>
-								<label for="UPI" class="ip-label">UPI</label>
-
-								<input type="radio" id="net-banking" name="payment" value="net-banking" class="ip" required>
-								<label for="net-banking" class="ip-label">Net Banking</label>
-							</div>
-							<input type="hidden" name="" value="$id">
-							<input type="hidden" name="venue-name" value="$venue_name">
-							<input type="hidden" name="concert-name" value="$conc_name">
-							<input type="hidden" name="concert-date" value="$concert_date">
-							<input type="hidden" name="time" value="$time">
-
 			HTML;
-			
-			$check_query = "Select sum(seat_no) as total from ticket t, concert c where c.concert_id = $id and t.concert_id = c.concert_id";
-			$result = $connection->query($check_query);
-			$total_num = $result->fetch_assoc()['total'];
-			//echo $total_num;
 
-			$number_query = "select * from venue where venue_name = '$venue_name'";
-			$result2 = $connection->query($number_query);
-			if(!$result2) die($connection->error);
-			$capacity = $result2->fetch_assoc()['capacity'];
+						$check_query = "Select sum(seat_no) as total from ticket t, concert c where c.concert_id = $id and t.concert_id = c.concert_id";
+						$result = $connection->query($check_query);
+						$total_num = $result->fetch_assoc()['total'];
+						//echo $total_num;
+						if(!isset($total_num)){$total_num = 0;}
+						$number_query = "select * from venue where venue_name = '$venue_name'";
+						$result2 = $connection->query($number_query);
+						if(!$result2) die($connection->error);
+						$capacity = $result2->fetch_assoc()['capacity'];
+						echo "$capacity  hello $total_num";
+						if($capacity-$total_num >= 10)
+						{
 
-			if($total_num >= $capacity-1 )
+							echo <<<HTML
+									
+									  <option value="1">ONE</option>
+									  <option value="2">TWO</option>
+									  <option value="3">THREE</option>
+									  <option value="4">FOUR</option>
+									  <option value="5">FIVE</option>
+									  <option value="6">SIX</option>
+									  <option value="7">SEVEN</option>
+									  <option value="8">EIGHT</option>
+									  <option value="9">NINE</option>
+									  <option value="10">TEN</option>
+									</select>
+									<label for="payment">Payment Method : </label><br><br>
+									<input type="radio" id="card"  name="payment" value="Credit/Debit Card" class="ip" required>
+									<label for="card" class="ip-label">Credit/Debit Card</label>
+
+									<input type="radio" id="UPI" name="payment" value="UPI " class="ip" required>
+									<label for="UPI" class="ip-label">UPI</label>
+
+									<input type="radio" id="net-banking" name="payment" value="net-banking" class="ip" required>
+									<label for="net-banking" class="ip-label">Net Banking</label>
+								</div>
+								<input type="hidden" name="" value="$id">
+								<input type="hidden" name="venue-name" value="$venue_name">
+								<input type="hidden" name="concert-name" value="$conc_name">
+								<input type="hidden" name="concert-date" value="$concert_date">
+								<input type="hidden" name="time" value="$time">
+
+							HTML;
+
+						}
+						else
+						{
+							$diff = $capacity-$total_num;
+							//echo "Less seats available";
+
+							$option_array =  array(
+									'<option value="1">ONE</option>',
+								  	'<option value="2">TWO</option>',
+									'<option value="3">THREE</option>',
+									'<option value="4">FOUR</option>',
+									'<option value="5">FIVE</option>',
+									'<option value="6">SIX</option>',
+									'<option value="7">SEVEN</option>',
+									'<option value="8">EIGHT</option>',
+									'<option value="9">NINE</option>',
+									'<option value="10">TEN</option>'
+							);
+
+							for ($i=0; $i < $diff; $i++) 
+							{ 
+								$item = $option_array[$i];
+								echo "$item";
+							}
+							echo <<<HTML
+
+								</select>
+									<label for="payment">Payment Method : </label><br><br>
+									<input type="radio" id="card"  name="payment" value="Credit/Debit Card" class="ip" required>
+									<label for="card" class="ip-label">Credit/Debit Card</label>
+
+									<input type="radio" id="UPI" name="payment" value="UPI " class="ip" required>
+									<label for="UPI" class="ip-label">UPI</label>
+
+									<input type="radio" id="net-banking" name="payment" value="net-banking" class="ip" required>
+									<label for="net-banking" class="ip-label">Net Banking</label>
+								</div>
+								<input type="hidden" name="" value="$id">
+								<input type="hidden" name="venue-name" value="$venue_name">
+								<input type="hidden" name="concert-name" value="$conc_name">
+								<input type="hidden" name="concert-date" value="$concert_date">
+								<input type="hidden" name="time" value="$time">
+
+
+
+							HTML;
+						}
+
+			if($total_num >= $capacity )
 			{
 				echo "<h1>HouseFull</h1>";
 				

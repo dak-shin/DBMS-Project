@@ -73,6 +73,7 @@
         	if(!$result2) die($connection->error);
         	$concert_id = $result2->fetch_assoc()['concert_id'];
 
+
 			$venue_name = $_SESSION['venue_name']; 
 			$ticket_query = "Insert into ticket (type_id,venue_location, seat_no, concert_id, customer_id) values ('$type_id','$venue_name','$size','$concert_id','$customer_id')";
 			$result3 = $connection->query($ticket_query);
@@ -170,34 +171,39 @@
         			$arr = $result2->fetch_assoc();
         			$c_name = $arr['concert_name'];
         			$c_time = $arr['timming'];
-        			$c_date = $arr['concert_date'];
+        			$c_date = (string)$arr['concert_date'];
 
-	        		echo <<<HTML
-					<div class="ticket-card">
-						<div class="ticket-info">
-							<div><span>Ticket ID : </span> $t_id</div>
-							<div><span>Ticket Class : </span>$t_type</div>
-							<div><span>Venue Name : </span>$t_venue</div>
-							<div><span>Number of People : </span>$t_no</div>
-							<div><span>Concert Name : </span>$c_name</div>
-							<div><span>Time : </span>$c_time</div>
-							<div><span>Date : </span>$c_date</div>
-							<div><span>User ID : </span>$cu_id</div>
-							<div><span>Total Amount : </span>Rs.$t_amt</div>
-							<div><span>Show QR Code : </span>
-								<div class="cancelbtn smol-button">
-									<a href="http://localhost/scripts/qr.php?ticket_id=$t_id" target="_blank">QRcode</a>
+        			$date2 = date("Y-m-d");
+
+					if ($c_date >= $date2) 
+					{
+		        		echo <<<HTML
+						<div class="ticket-card">
+							<div class="ticket-info">
+								<div><span>Ticket ID : </span> $t_id</div>
+								<div><span>Ticket Class : </span>$t_type</div>
+								<div><span>Venue Name : </span>$t_venue</div>
+								<div><span>Number of People : </span>$t_no</div>
+								<div><span>Concert Name : </span>$c_name</div>
+								<div><span>Time : </span>$c_time</div>
+								<div><span>Date : </span>$c_date</div>
+								<div><span>User ID : </span>$cu_id</div>
+								<div><span>Total Amount : </span>Rs.$t_amt</div>
+								<div><span>Show QR Code : </span>
+									<div class="cancelbtn smol-button">
+										<a href="http://localhost/scripts/qr.php?ticket_id=$t_id" target="_blank">QRcode</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="cancelbtn smol-button">
-							<a href="http://localhost/scripts/cancel.php?ticket_id=$t_id" >Cancel</a>
+							<div class="cancelbtn smol-button">
+								<a href="http://localhost/scripts/cancel.php?ticket_id=$t_id" >Cancel</a>
 
+							</div>
+							
 						</div>
 						
-					</div>
-					
-					HTML;
+						HTML;
+					}
 	        	}
 	        }
 	        else

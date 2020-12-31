@@ -51,7 +51,7 @@
         ?>
     </section>
 
-    <section class="dash-sec" >
+    <section class="dash-sec pay-sec" style="background-image: none;">
      <?php
 
      	$t_class = $_POST['level'];
@@ -93,7 +93,7 @@
 						<input type="hidden" name="level" value="$t_class">
 						<input type="hidden" name="number" value="$number">
 						<input type="hidden" name="book" value="yes">
-						<label>
+						<label style="margin-left: 10px;">
 							Do you wish to book the above ticket, followed by payment through <span>$payment</span> : 
 						</label>
 						<button type="submit" class="button">
