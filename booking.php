@@ -10,7 +10,9 @@
 <body>
 	<section id="navigation-bar" class="navigation-bar">
 		<div class="logo">
+
 			OnePage
+			
 		</div>
 		<div class="home-btn">
 			<a href="index.php" style="color: white;">Home</a>
